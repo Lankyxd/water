@@ -12,9 +12,9 @@
     <!-- navbar -->
     <header class="p-5">
         <div class="flex items-center justify-between md:justify-center">
-            <img class="h-[50px] md:h-[60px] md:px-4" src="img/classica.png" alt="logo 1">
+            <img class="h-[60px] md:h-[60px] md:px-4" src="img/classica.png" alt="logo 1">
             <img class="h-[50px] md:h-[50px] md:px-4" src="img/aquafeel.png" alt="logo 2">
-            <a href="" class="bg-[#52CDA1] px-7 py-2 text-white hover:bg-[#182D42] transition-all hover:scale-103 md:hover:scale-110">Llamar</a>
+            
         </div>
     </header>
 
@@ -22,7 +22,7 @@
 <section class="bg-[#174B80] bg-cover px-10 md:flex bg-[url('img/background.png')] md:h-[650px] xl:h-[750px] gap-5">
         <div class="flex-col text-center text-white space-y-3 xl:pl-20 py-5 md:flex-1 mx-auto md:mt-10 md:text-left">
             <p class="text-2xl font-semibold md:text-4xl">SISTEMAS <br>DE PURIFICACION <br>DE AGUA</p>
-            <p class="uppercase text-6xl font-bold md:text-8xl">Classica<br>Infinity</p>
+            <p class="uppercase text-5xl font-bold md:text-8xl">Classica<br>Infinity</p>
             <p class="text-lg mr-2">Somos una organización comprometida con proporcionar agua potable, <br> 
                 limpia y segura a nuestras comunidades, al tiempo que facilitamos el ahorro de dinero
                 y promovemos la sostenibilidad y la salud. <br>
@@ -104,7 +104,7 @@
           <div class="flex justify-center p-2">
             <img src="img/aquafeel.png" alt="">
           </div>
-      <div class="relative mx-auto h-[325px] w-fit">
+      <div class="relative mx-auto md:h-[325px] w-fit">
         <video id="miVideo" class="border-4 border-[#52CDA1] h-full p-1" src="vid/AQUAFEEL.mp4"></video>
         <button id="playBtn" onclick="toggleVideo()"
         class="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/50 transition-all">
@@ -115,9 +115,9 @@
 </section>
 <section class="bg-gradient-to-b from-[#2D93D3] to-[#4254F6] py-16 px-10">
   <!-- Título -->
-  <div class="text-center mb-12">
+  <div class="text-center mb-12 text-center">
     <p class="text-white font-semibold mb-2">Classica Infinity</p>
-    <h2 class="text-white text-5xl font-black uppercase">Agua limpia, salud y<br>sostenibilidad</h2>
+    <h2 class="text-white text-3xl md:text-5xl font-black uppercase">Agua limpia, salud y sostenibilidad</h2>
   </div>
 
   <!-- 3 columnas -->
@@ -262,23 +262,6 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.5 });
 
 observer.observe(video);
-
-// enviar mail
-document.getElementById('mailLink').addEventListener('click', function(e) {
-    e.preventDefault(); // Evitamos el comportamiento predeterminado
-    const nombre = document.querySelector('input[placeholder="Juan"]').value;
-    const apellido = document.querySelector('input[placeholder="García"]').value;
-    const email = document.querySelector('input[placeholder="juan@email.com"]').value;
-    const mensaje = document.querySelector('textarea').value;
-
-    const subject = encodeURIComponent('Consulta de Agua');
-    const body = encodeURIComponent(
-        `Nombre: ${nombre}\nApellido: ${apellido}\nEmail: ${email}\nMensaje: ${mensaje}`
-    );
-
-    const destinatario = 'eldogelanky@hotmail.com'; // Cambialo por tu mail real
-    this.href = `mailto:${destinatario}?subject=${subject}&body=${body}`;
-});
     </script>
 </body>
 </html>
