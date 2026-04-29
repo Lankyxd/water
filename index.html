@@ -59,10 +59,10 @@
                            focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none">
                   </textarea>
                 </div>
-                <button class="w-full bg-[#52CDA1] active:scale-95 transition-all
-                               text-white font-medium text-sm py-2.5 rounded-lg hover:bg-[#182D42] hover:scale-103">
-                  ¡Contáctanos!
-                </button>
+              <a id="mailLink" class="w-full bg-[#52CDA1] active:scale-95 transition-all
+                  text-white font-medium text-sm py-2.5 rounded-lg hover:bg-[#182D42] hover:scale-103 text-center" href="#">
+                      ¡Contáctanos!
+              </a>
         </div>
     </div>
     <div class="p-2">
@@ -262,6 +262,23 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.5 });
 
 observer.observe(video);
+
+// enviar mail
+document.getElementById('mailLink').addEventListener('click', function(e) {
+    e.preventDefault(); // Evitamos el comportamiento predeterminado
+    const nombre = document.querySelector('input[placeholder="Juan"]').value;
+    const apellido = document.querySelector('input[placeholder="García"]').value;
+    const email = document.querySelector('input[placeholder="juan@email.com"]').value;
+    const mensaje = document.querySelector('textarea').value;
+
+    const subject = encodeURIComponent('Consulta de Agua');
+    const body = encodeURIComponent(
+        `Nombre: ${nombre}\nApellido: ${apellido}\nEmail: ${email}\nMensaje: ${mensaje}`
+    );
+
+    const destinatario = 'eldogelanky@hotmail.com'; // Cambialo por tu mail real
+    this.href = `mailto:${destinatario}?subject=${subject}&body=${body}`;
+});
     </script>
 </body>
 </html>
