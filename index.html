@@ -104,7 +104,7 @@
         <div>
             <img class="mx-auto h-[100px]" src="img/aquafeel.png" alt="aquafeel solutions">   
         </div>
-        <video id="miVideo" class=" border-4 border-[#52CDA1] h-[325px] p-1 mx-auto" autoplay src="vid/AQUAFEEL.mp4"></video>
+        <video id="miVideo" class="border-4 border-[#52CDA1] h-[325px] p-1 mx-auto" src="vid/AQUAFEEL.mp4"></video>
     </div>
 </section>
 <section class="bg-gradient-to-b from-[#2D93D3] to-[#4254F6] py-16 px-10">
@@ -229,6 +229,7 @@ const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       video.play();
+      video.volume = 0.5; // ajusta el volumen si es necesario
     } else {
       video.pause(); // pausa si salís de la sección
     }
