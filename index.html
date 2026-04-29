@@ -101,11 +101,13 @@
 <section>
     <div class=" bg-[url('img/background.png')] xl:bg-cover h-[600px]">
         <p class="uppercase pt-10 text-[#52CDA1] text-center text-2xl font-bold">sistemas de purificacion de agua</p>
-        <div>
-            <img class="mx-auto h-[100px]" src="img/aquafeel.png" alt="aquafeel solutions">   
-        </div>
-        <video id="miVideo" class="border-4 border-[#52CDA1] h-[325px] p-1 mx-auto" src="vid/AQUAFEEL.mp4"></video>
-    </div>
+        <div class="relative mx-auto h-[325px] w-fit">
+    <video id="miVideo" class="border-4 border-[#52CDA1] h-full p-1" src="vid/AQUAFEEL.mp4"></video>
+    <button id="playBtn" onclick="toggleVideo()"
+        class="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/50 transition-all">
+        <span id="playIcon" class="text-white text-6xl drop-shadow-lg">▶</span>
+    </button>
+</div>
 </section>
 <section class="bg-gradient-to-b from-[#2D93D3] to-[#4254F6] py-16 px-10">
   <!-- Título -->
@@ -223,18 +225,37 @@ Nuestra misión es simple pero poderosa: brindar acceso fácil y asequible a agu
 
 
     <script>
-        const video = document.getElementById('miVideo');
+const video = document.getElementById('miVideo');
+const playBtn = document.getElementById('playBtn');
+const playIcon = document.getElementById('playIcon');
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      video.play();
-      video.volume = 0.5; // ajusta el volumen si es necesario
+function toggleVideo() {
+    if (video.paused) {
+        video.volume = 0.5;
+        video.play();
+        playIcon.textContent = '⏸';
+        playBtn.classList.add('opacity-0'); // oculta el botón al reproducir
     } else {
-      video.pause(); // pausa si salís de la sección
+        video.pause();
+        playIcon.textContent = '▶';
+        playBtn.classList.remove('opacity-0');
     }
-  });
-}, { threshold: 0.5 }); // 1 = cuando el 100% del video es visible
+}
+
+// Muestra el botón al pausar o terminar
+video.addEventListener('pause', () => {
+    playBtn.classList.remove('opacity-0');
+    playIcon.textContent = '▶';
+});
+
+// Observer para pausar si sale de pantalla
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (!entry.isIntersecting) {
+            video.pause();
+        }
+    });
+}, { threshold: 0.5 });
 
 observer.observe(video);
     </script>
